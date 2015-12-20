@@ -66,7 +66,8 @@ public class CMSetupWizardData extends AbstractSetupData {
         if (SetupWizardUtils.hasGMS(mContext)) {
             pages.add(new GmsAccountPage(mContext, this).setHidden(true));
         }
-        if (!SetupWizardUtils.hasLeanback(mContext)) {
+        if (!SetupWizardUtils.hasLeanback(mContext) && SetupWizardUtils.accountExists(
+                mContext, mContext.getString(R.string.cm_account_type))) {
             pages.add(new CyanogenServicesPage(mContext, this).setHidden(true));
         }
         if (SetupWizardUtils.hasFingerprint(mContext) && SetupWizardUtils.isOwner()) {
